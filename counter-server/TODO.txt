@@ -1,0 +1,6 @@
+discovery
+scaling capacity
+disk persistence
+catch up after restart
+gatling tests
+
