@@ -8,7 +8,6 @@ import java.util.*
 class NotificationClient(private val restTemplate: RestTemplate) {
 
     fun notify(endpoint: String, id: UUID) {
-        println(endpoint)
         restTemplate.postForLocation(endpoint, Event(id))
     }
 }

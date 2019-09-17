@@ -1,6 +1,10 @@
 discovery
 scaling capacity
 disk persistence
-catch up after restart
+catch up after restart - restoring
 gatling tests
+
+
+add different keys
+decrement
 
