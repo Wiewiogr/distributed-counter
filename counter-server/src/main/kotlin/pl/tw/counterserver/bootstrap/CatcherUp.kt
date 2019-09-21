@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationListener
 import org.springframework.context.event.ContextRefreshedEvent
 import org.springframework.stereotype.Component
 import pl.tw.counterserver.CountingService
-import pl.tw.counterserver.notifications.cluster.ClusterDiscovery
+import pl.tw.counterserver.discovery.ClusterDiscovery
 
 
 @Component
