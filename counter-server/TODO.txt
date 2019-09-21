@@ -1,10 +1,12 @@
 discovery
-scaling capacity
-disk persistence
 catch up after restart - restoring
-gatling tests
-
-
-add different keys
-decrement
-
+async notifications
+e2e tests
+monitoring
+decrementation
+keyed counter
+optimized data structure
+storage on disk
+sharding
+garbage collecting datat structures
+scaling
