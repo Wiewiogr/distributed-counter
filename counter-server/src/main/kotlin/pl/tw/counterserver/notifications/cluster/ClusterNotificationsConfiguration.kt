@@ -18,12 +18,12 @@ class ClusterNotificationsConfiguration {
     fun notificationClient(restTemplate: RestTemplate) = NotificationClient(restTemplate)
 
     @Bean
-    fun clusterDiscovery(@Value("\${cluster.servers.list:}") servers: List<String>) =
+    fun clusterDiscovery(@Value("\${cluster.servers.list:}") servers: List<String>): ClusterDiscovery =
             StaticClusterDiscovery(servers)
 
     @Bean
     fun notifier(notificationClient: NotificationClient,
-                 staticClusterDiscovery: StaticClusterDiscovery) =
+                 staticClusterDiscovery: ClusterDiscovery) =
             ClusterNotifier(
                     notificationClient,
                     staticClusterDiscovery

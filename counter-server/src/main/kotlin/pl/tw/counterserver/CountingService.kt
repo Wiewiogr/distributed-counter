@@ -22,5 +22,7 @@ class CountingService(val notifier: Notifier) {
         }
     }
 
+    fun getAllEvents() = eventsSet
+
     fun getValue() = eventsSet.size
 }

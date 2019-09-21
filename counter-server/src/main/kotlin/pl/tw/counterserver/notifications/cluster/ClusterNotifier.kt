@@ -5,7 +5,7 @@ import java.util.*
 
 
 class ClusterNotifier(private val notificationClient: NotificationClient,
-                      private val clusterDiscovery: StaticClusterDiscovery) : Notifier {
+                      private val clusterDiscovery: ClusterDiscovery) : Notifier {
 
     override fun notify(id: UUID) {
         clusterDiscovery
