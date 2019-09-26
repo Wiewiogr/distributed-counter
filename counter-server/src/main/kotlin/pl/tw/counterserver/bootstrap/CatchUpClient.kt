@@ -23,9 +23,3 @@ class CatchUpClient(private val restTemplate: RestTemplate) {
         }
     }
 }
-
-fun main(args: Array<String>) {
-    CatchUpClient(RestTemplate()).getEvents("http://localhost:8080")
-            .map { it.javaClass }
-            .forEach { println(it) }
-}

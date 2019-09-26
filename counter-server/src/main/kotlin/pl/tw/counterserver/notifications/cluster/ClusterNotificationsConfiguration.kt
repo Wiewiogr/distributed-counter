@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 import org.springframework.web.client.RestTemplate
 import pl.tw.counterserver.discovery.ClusterDiscovery
-import pl.tw.counterserver.discovery.StaticClusterDiscovery
+import pl.tw.counterserver.discovery.sstatic.StaticClusterDiscovery
 
 
 @Profile("!single-server")
@@ -14,14 +14,7 @@ import pl.tw.counterserver.discovery.StaticClusterDiscovery
 class ClusterNotificationsConfiguration {
 
     @Bean
-    fun restTemplate() = RestTemplate()
-
-    @Bean
     fun notificationClient(restTemplate: RestTemplate) = NotificationClient(restTemplate)
-
-    @Bean
-    fun clusterDiscovery(@Value("\${cluster.servers.list:}") servers: List<String>): ClusterDiscovery =
-            StaticClusterDiscovery(servers)
 
     @Bean
     fun notifier(notificationClient: NotificationClient,

@@ -2,21 +2,30 @@ version: '3'
 services:
   counter-1:
     environment:
-      - PROPERTIES=-Dcluster.servers.list=http://counter-3:8080,http://counter-2:8080
+      PROPERTIES: >-
+        -Dspring.profiles.active=gossip-discovery,seed-node
+        -Dapplication.self.address=http://counter-1:8080
+        -Dcluster.servers.seed.isSeedNode=true
     build: .
     ports:
     - "8080:8080"
 
   counter-2:
     environment:
-      - PROPERTIES=-Dcluster.servers.list=http://counter-1:8080,http://counter-3:8080
+      PROPERTIES: >-
+        -Dspring.profiles.active=gossip-discovery
+        -Dapplication.self.address=http://counter-2:8080
+        -Dcluster.servers.seed.list=http://counter-1:8080
     build: .
     ports:
     - "8081:8080"
 
   counter-3:
     environment:
-      - PROPERTIES=-Dcluster.servers.list=http://counter-1:8080,http://counter-2:8080
+      PROPERTIES: >-
+        -Dspring.profiles.active=gossip-discovery
+        -Dapplication.self.address=http://counter-3:8080
+        -Dcluster.servers.seed.list=http://counter-1:8080
     build: .
     ports:
     - "8082:8080"

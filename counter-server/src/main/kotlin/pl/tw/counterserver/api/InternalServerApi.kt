@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import pl.tw.counterserver.CountingService
 import pl.tw.counterserver.Event
+import pl.tw.counterserver.discovery.ClusterDiscovery
 import java.util.*
 
 
 @Controller
-class InternalServerApi(private val countingService: CountingService) {
+class InternalServerApi(private val countingService: CountingService,
+                        private val discovery: ClusterDiscovery) {
 
     @PostMapping("internal/notify")
     fun receiveNotification(@RequestBody event: Event): ResponseEntity<String> {
@@ -22,6 +24,11 @@ class InternalServerApi(private val countingService: CountingService) {
     @GetMapping("internal/events")
     fun getAllEvents(): ResponseEntity<Collection<UUID>> {
         return ResponseEntity.ok(countingService.getAllEvents())
+    }
+
+    @GetMapping("internal/nodes")
+    fun getNodes(): ResponseEntity<Collection<String>> {
+        return ResponseEntity.ok(discovery.getServers())
     }
 }
 

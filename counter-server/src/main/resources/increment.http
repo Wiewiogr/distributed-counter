@@ -29,4 +29,18 @@ GET localhost:8082/value
 
 ###
 
+###### discovery
+
+GET localhost:8082/internal/nodes
+
+###
+
+GET localhost:8081/internal/nodes
+
+###
+
+GET localhost:8080/internal/nodes
+
+###
+
 

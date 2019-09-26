@@ -10,3 +10,4 @@ storage on disk
 sharding
 garbage collecting datat structures
 scaling
+repairs
